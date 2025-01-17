@@ -1,3 +1,5 @@
+
+import "../styles/footer.scss";
 import Image from "next/image"
 
 export default function Footer(){
@@ -5,9 +7,9 @@ export default function Footer(){
         <footer>
             <div className="social-media">
                 <nav className="social-media-nav">
-                    <a href="https://github.com/filipeomendes"><Image src="/github-black.png" alt="Black Github logo" width={40} height={40}/></a>
-                    <a href="https://www.instagram.com/codigoestagiario/"><Image src="/instagram-black.png" alt="Black Instagram logo" width={40} height={40}/></a>
-                    <a href="https://www.linkedin.com/in/filipedeoliveiramendes/"><Image src="/linkedin-black.png" alt="Black LinkedIn logo" width={40} height={40}/></a>
+                    <a href="https://github.com/filipeomendes" target="_blank" rel="noopener noreferrer"><Image src="/github-black.png" alt="Black Github logo" width={40} height={40}/></a>
+                    <a href="https://www.instagram.com/codigoestagiario/" target="_blank" rel="noopener noreferrer"><Image src="/instagram-black.png" alt="Black Instagram logo" width={40} height={40}/></a>
+                    <a href="https://www.linkedin.com/in/filipedeoliveiramendes/" target="_blank" rel="noopener noreferrer"><Image src="/linkedin-black.png" alt="Black LinkedIn logo" width={40} height={40}/></a>
                 </nav>
             </div>
             <div className="copyright">

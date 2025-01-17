@@ -1,6 +1,8 @@
 
-import "./globals.scss";
 import Header from "@/components/Header";
+import "../styles/globals.scss";
+
+import { LanguageProvider } from "@/context/LanguageContext";
 import Footer from "@/components/Footer";
 
 export const metadata = {
@@ -12,9 +14,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header/>
-          {children}
-        <Footer/>
+        <LanguageProvider>
+          <Header/>
+            {children}
+          <Footer/>
+        </LanguageProvider>
       </body>
     </html>
   );
