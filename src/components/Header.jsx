@@ -18,21 +18,24 @@ export default function Header(){
                 <a href="#my-social-media">{language === "en" ? "My Social Media" : "Minhas Redes Sociais"}</a>
                 </nav>
             </div>
-            <div className="language-icons">
-                <Image
-                    src="/english.png"
-                    alt="United Kingdom flag button to set the page in English"
-                    width={30}
-                    height={30}
-                    onClick={() => changeLanguage("en")}
-                />
-                <Image
-                    src="/br-portuguese.png"
-                    alt="Brazilian flag button to set the page in Portuguese"
-                    width={30}
-                    height={30}
-                    onClick={() => changeLanguage("pt_br")}
-                />
+            <div className="language">
+                <div className="language-text">
+                    <p>{language === "en" ? "Language:" : "Idioma:"}</p>
+                </div>
+                <div className="language-icons">
+                    <Image
+                        src="/english.png"
+                        alt="United Kingdom flag button to set the page in English"
+                        width={30}
+                        height={30}
+                        onClick={() => changeLanguage("en")}/>
+                    <Image
+                        src="/br-portuguese.png"
+                        alt="Brazilian flag button to set the page in Portuguese"
+                        width={30}
+                        height={30}
+                        onClick={() => changeLanguage("pt_br")}/>
+                </div>
             </div>
         </header>
     );

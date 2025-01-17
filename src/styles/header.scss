@@ -1,0 +1,36 @@
+header {
+  padding: 1;
+  background-color: #F3F3F1;
+
+  .items {
+    nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 2rem 0 0 2rem;
+
+      a {
+        text-decoration: none;
+        color: #333;
+        text-align: left;
+      }
+    }
+  }
+
+  .language {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 0.5rem;
+    padding: 10rem 0 0 2rem;
+
+    .language-icons {
+      display: flex;
+      gap: 1rem;
+
+      img {
+        cursor: pointer;
+      }
+    }
+  }
+}
