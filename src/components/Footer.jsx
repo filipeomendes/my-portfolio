@@ -13,7 +13,8 @@ export default function Footer(){
                 </nav>
             </div>
             <div className="copyright">
-                <p className="copyright-text">All rights reserved ©2025 - Filipe de Oliveira Mendes</p>
+                <p className="copyright-text">Devoloped by Filipe de Oliveira Mendes</p>
+                <p className="copyright-text">All rights reserved ©2025</p>
             </div>
         </footer>
     );

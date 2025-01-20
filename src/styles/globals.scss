@@ -1,16 +1,21 @@
 // globals.scss
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
   }
   
 html {
-  font-size: 16px;
+  font-size: 20px;
 }
   
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  font-family: Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
+  background-color: #F9F9F8;
 }
