@@ -121,6 +121,14 @@ export default function Home() {
           </Link>
         </div>
       </section>
+      <section className="more-about-me">
+        <div className="more-about-me-title">
+          <h2>{idiom[language].myProjectsTitle}</h2>
+        </div>
+        <div className="more-about-me-text">
+          <p>{idiom[language].aboutMeText}</p>
+        </div>
+      </section>
     </main>
   );
 }

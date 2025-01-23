@@ -145,6 +145,31 @@ main {
             }
         }
     }
+
+    .more-about-me {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        align-items: center;
+
+        .more-about-me-title {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 2rem;
+
+            h2 {
+                font-size: 2rem;
+                color: #140802;
+            }
+        }
+
+        .more-about-me-text {
+            display: flex;
+            flex-direction: column;
+            
+            
+        }
+    }
 }
 
 
