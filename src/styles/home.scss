@@ -1,50 +1,264 @@
+// Variáveis para cores no modo claro
+$primary-bg-light: #F3F3F1;
+$secondary-bg-light: #F9F9F8;
+$primary-text-light: #140802;
+$secondary-text-light: #87817e;
+$accent-light: #140802;
+$accent-hover-light: #2a1004;
+$card-bg-light: #ffffff;
+$border-light: #b6a698;
+
+// Variáveis para cores no modo escuro
+$primary-bg-dark: #2A2A4E;
+$secondary-bg-dark: #1E1E38;
+$primary-text-dark: #FFFFFF;
+$secondary-text-dark: #D3D3D3;
+$accent-dark: #6D5ACF;
+$accent-hover-dark: #8975E0;
+$card-bg-dark: #343456;
+$border-dark: #4A4A7A;
+
+// Breakpoints para responsividade
+$breakpoint-sm: 576px;    // Smartphones maiores
+$breakpoint-md: 768px;    // Tablets
+$breakpoint-lg: 992px;    // Desktops
+$breakpoint-xl: 1200px;   // Telas grandes
+$breakpoint-xxl: 1400px;  // Telas maiores
+$breakpoint-4k: 2560px;   // Telas ultrawide 4K
+
+// Mixins para responsividade
+@mixin sm {
+  @media (min-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: #{$breakpoint-xxl}) {
+    @content;
+  }
+}
+
+@mixin ultra-wide {
+  @media (min-width: #{$breakpoint-4k}) {
+    @content;
+  }
+}
+
 main {
     display: flex;
     flex-direction: column;
+    width: 100%; // Garantir que ocupe 100% da largura disponível
+    max-width: 100%; // Remover limite máximo fixo
+    margin: 0 auto;
+    transition: all 0.3s ease;
 
+    @include xl {
+        max-width: 100%; // Mantém 100% em telas grandes
+    }
+
+    @include xxl {
+        max-width: 100%; // Mantém 100% em telas maiores
+    }
+
+    @include ultra-wide {
+        max-width: 100%; // Mantém 100% em ultrawide
+    }
+
+    // Modo escuro para o main
+    body.dark-mode & {
+        background-color: $secondary-bg-dark;
+        color: $primary-text-dark;
+    }
 
     .about-me {
         display: flex;
         flex-direction: column-reverse;
-        height: 100vh;
-        background-color: #F3F3F1;
+        height: auto;
+        min-height: 80vh;
+        background-color: $primary-bg-light;
         padding: 1.5rem;
+        padding-top: 4rem;
         align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        transition: all 0.3s ease;
+
+        // Modo escuro para about-me
+        body.dark-mode & {
+            background-color: $primary-bg-dark;
+        }
 
         .about-me-text {
             display: flex;
             flex-direction: column;
+            max-width: 100%;
+            transition: all 0.3s ease;
+
             h1 {
                 margin-top: 0.5rem;
-                color: #140802;
+                color: $primary-text-light;
                 font-size: 2.4rem;
+                transition: color 0.3s ease;
+
+                body.dark-mode & {
+                    color: $primary-text-dark;
+                }
+
+                @include sm {
+                    font-size: 2.6rem;
+                }
+
+                @include md {
+                    font-size: 3rem;
+                }
+
+                @include lg {
+                    font-size: 3.5rem;
+                }
+
+                @include xl {
+                    font-size: 4rem;
+                }
+
+                @include ultra-wide {
+                    font-size: 5rem;
+                }
             }
 
             h3 {
-                color: #87817e;
+                color: $secondary-text-light;
                 font-size: 2rem;
                 margin-bottom: 1rem;
+                transition: color 0.3s ease;
+
+                body.dark-mode & {
+                    color: $secondary-text-dark;
+                }
+
+                @include sm {
+                    font-size: 2.2rem;
+                }
+
+                @include md {
+                    font-size: 2.4rem;
+                }
+
+                @include lg {
+                    font-size: 2.6rem;
+                }
+
+                @include xl {
+                    font-size: 3rem;
+                }
+
+                @include ultra-wide {
+                    font-size: 3.8rem;
+                }
+            }
+
+            p {
+                line-height: 1.6;
+                transition: color 0.3s ease;
+
+                body.dark-mode & {
+                    color: $secondary-text-dark;
+                }
+
+                @include md {
+                    font-size: 1.1rem;
+                    max-width: 80%;
+                }
+
+                @include lg {
+                    font-size: 1.15rem;
+                    max-width: 70%;
+                }
+
+                @include xl {
+                    font-size: 1.2rem;
+                    max-width: 25rem;
+                }
+
+                @include ultra-wide {
+                    font-size: 1.4rem;
+                    max-width: 35rem;
+                }
             }
 
             .botao-conferir {
-                background-color: #140802;
+                background-color: $accent-light;
                 color: #fff;
                 font-weight: 700;
                 border-radius: 8px;
                 padding: 0.8rem 1.3rem;
                 display: inline-block;
                 cursor: pointer;
-                margin-top: 2rem ;
+                margin-top: 2rem;
                 transition: all 0.3s ease;
                 align-self: center;
+                border: none;
+
+                body.dark-mode & {
+                    background-color: $accent-dark;
+                    color: $primary-text-dark;
+                }
 
                 &:hover {
-                    background-color: #2a1004;
+                    background-color: $accent-hover-light;
                     transform: translateY(-4px);
+
+                    body.dark-mode & {
+                        background-color: $accent-hover-dark;
+                    }
                 }
 
                 p {
                     margin: 0;
+                }
+
+                @include md {
+                    font-size: 1.1rem;
+                    padding: 0.9rem 1.5rem;
+                    align-self: flex-start;
+                    margin: 2.5rem 0;
+                }
+
+                @include lg {
+                    font-size: 1.2rem;
+                    padding: 1rem 1.8rem;
+                    margin: 3rem 0;
+                }
+
+                @include xl {
+                    font-size: 1.25rem;
+                    padding: 1.1rem 2rem;
+                    margin: 4rem 0;
+                }
+
+                @include ultra-wide {
+                    font-size: 1.5rem;
+                    padding: 1.3rem 2.5rem;
+                    margin: 5rem 0;
+                    border-radius: 12px;
                 }
             }
         }
@@ -52,26 +266,133 @@ main {
         img {
             height: 10rem;
             width: 10rem;
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+            body.dark-mode & {
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            }
+
+            @include sm {
+                height: 11rem;
+                width: 11rem;
+            }
+
+            @include md {
+                height: 12rem;
+                width: 12rem;
+                margin-bottom: 0;
+            }
+
+            @include lg {
+                height: 15rem;
+                width: 15rem;
+            }
+
+            @include xl {
+                height: 18rem;
+                width: 18rem;
+            }
+
+            @include ultra-wide {
+                height: 20rem;
+                width: 20rem;
+            }
+        }
+
+        // Responsividade para tablets e acima
+        @include md {
+            flex-direction: row;
+            justify-content: space-around;
+            padding: 2rem;
+            height: auto;
+            min-height: 100vh;
+            align-items: center;
+            gap: 2rem;
+            
+            .about-me-text {
+                align-items: flex-start;
+                
+                .botao-conferir {
+                    align-self: flex-start;
+                }
+            }
+        }
+
+        @include lg {
+            padding: 4rem;
+            gap: 3rem;
+            justify-content: space-between;
+            min-height: 90vh;
+        }
+
+        @include xl {
+            padding: 6rem 8rem;
+            gap: 4rem;
+            height: 100vh;
+        }
+
+        @include xxl {
+            padding: 8rem 10rem;
+            gap: 6rem;
+        }
+
+        @include ultra-wide {
+            padding: 10rem;
+            gap: 10rem;
         }
     }
 
     .my-projects {
         display: flex;
         flex-direction: column;
-        background-color: #F9F9F8;
+        background-color: $secondary-bg-light;
         align-items: center;
         padding: 2rem 1rem;
         width: 100%;
+        transition: all 0.3s ease;
+
+        body.dark-mode & {
+            background-color: $secondary-bg-dark;
+        }
 
         .my-projects-title {
             width: 100%;
             text-align: center;
             margin-bottom: 2rem;
+            transition: color 0.3s ease;
 
             h2 {
                 font-size: 2rem;
-                color: #140802;
+                color: $primary-text-light;
+                transition: color 0.3s ease;
+
+                body.dark-mode & {
+                    color: $primary-text-dark;
+                }
+
+                @include sm {
+                    font-size: 2.2rem;
+                }
+
+                @include md {
+                    font-size: 2.4rem;
+                }
+
+                @include lg {
+                    font-size: 2.6rem;
+                }
+
+                @include xl {
+                    font-size: 2.8rem;
+                }
+
+                @include ultra-wide {
+                    font-size: 3.5rem;
+                }
             }
         }
 
@@ -82,7 +403,8 @@ main {
             width: 100%;
             padding: 1rem 0.5rem;
             scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch; // Para melhor comportamento no iOS
+            -webkit-overflow-scrolling: touch;
+            transition: all 0.3s ease;
 
             &::-webkit-scrollbar {
                 display: none;
@@ -96,15 +418,37 @@ main {
                 flex: 0 0 auto;
                 width: 280px;
                 scroll-snap-align: start;
+                transition: all 0.3s ease;
+
+                @include sm {
+                    width: 300px;
+                }
+
+                @include lg {
+                    width: 320px;
+                }
+
+                @include xl {
+                    width: 350px;
+                }
+
+                @include ultra-wide {
+                    width: 400px;
+                }
             }
 
             .my-projects-card {
-                background-color: white;
+                background-color: $card-bg-light;
                 border-radius: 12px;
                 overflow: hidden;
                 box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
                 transition: all 0.3s ease;
                 height: 100%;
+
+                body.dark-mode & {
+                    background-color: $card-bg-dark;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                }
 
                 .my-projects-card-image {
                     position: relative;
@@ -113,22 +457,76 @@ main {
                         width: 100%;
                         height: 180px;
                         object-fit: cover;
+                        transition: all 0.3s ease;
+
+                        @include lg {
+                            height: 200px;
+                        }
+
+                        @include xl {
+                            height: 220px;
+                        }
+
+                        @include ultra-wide {
+                            height: 250px;
+                        }
                     }
 
                     div {
                         padding: 1rem;
-                        background-color: white;
+                        background-color: $card-bg-light;
+                        transition: all 0.3s ease;
+
+                        body.dark-mode & {
+                            background-color: $card-bg-dark;
+                        }
 
                         h3 {
-                            color: #140802;
+                            color: $primary-text-light;
                             font-size: 1.2rem;
                             margin-bottom: 0.5rem;
+                            transition: color 0.3s ease;
+
+                            body.dark-mode & {
+                                color: $primary-text-dark;
+                            }
+
+                            @include lg {
+                                font-size: 1.3rem;
+                            }
+
+                            @include xl {
+                                font-size: 1.4rem;
+                            }
+
+                            @include ultra-wide {
+                                font-size: 1.6rem;
+                            }
                         }
 
                         p {
-                            color: #87817e;
+                            color: $secondary-text-light;
                             font-size: 0.9rem;
                             line-height: 1.4;
+                            transition: color 0.3s ease;
+
+                            body.dark-mode & {
+                                color: $secondary-text-dark;
+                            }
+
+                            @include lg {
+                                font-size: 1rem;
+                                line-height: 1.5;
+                            }
+
+                            @include xl {
+                                font-size: 1.1rem;
+                            }
+
+                            @include ultra-wide {
+                                font-size: 1.2rem;
+                                line-height: 1.6;
+                            }
                         }
                     }
                 }
@@ -137,12 +535,52 @@ main {
                     transform: scale(1.03);
                     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
                     z-index: 2;
+
+                    body.dark-mode & {
+                        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+                    }
                 }
             }
 
             &:hover .my-projects-card:not(:hover) {
                 filter: brightness(0.9);
             }
+
+            // Responsividade para tablets e acima
+            @include md {
+                justify-content: center;
+                flex-wrap: wrap;
+                overflow-x: visible;
+                gap: 2rem;
+                padding: 1.5rem;
+            }
+
+            @include lg {
+                gap: 2.5rem;
+                padding: 2rem;
+            }
+
+            @include ultra-wide {
+                gap: 3rem;
+                padding: 3rem;
+            }
+        }
+
+        // Responsividade para tablets e acima
+        @include md {
+            padding: 3rem 2rem;
+        }
+
+        @include lg {
+            padding: 4rem 3rem;
+        }
+
+        @include xl {
+            padding: 5rem 4rem;
+        }
+
+        @include ultra-wide {
+            padding: 6rem 5rem;
         }
     }
 
@@ -151,6 +589,12 @@ main {
         flex-direction: column;
         padding: 1.5rem;
         align-items: center;
+        background-color: $primary-bg-light;
+        transition: all 0.3s ease;
+
+        body.dark-mode & {
+            background-color: $primary-bg-dark;
+        }
 
         .more-about-me-title {
             width: 100%;
@@ -159,81 +603,116 @@ main {
 
             h2 {
                 font-size: 2rem;
-                color: #140802;
+                color: $primary-text-light;
+                transition: color 0.3s ease;
+
+                body.dark-mode & {
+                    color: $primary-text-dark;
+                }
+
+                @include sm {
+                    font-size: 2.2rem;
+                }
+
+                @include md {
+                    font-size: 2.4rem;
+                }
+
+                @include lg {
+                    font-size: 2.6rem;
+                }
+
+                @include xl {
+                    font-size: 2.8rem;
+                }
+
+                @include ultra-wide {
+                    font-size: 3.5rem;
+                }
             }
         }
 
         .more-about-me-text {
             display: flex;
             flex-direction: column;
-            
-            
+            max-width: 100%;
+            transition: all 0.3s ease;
+
+            p {
+                line-height: 1.6;
+                color: $secondary-text-light;
+                margin-bottom: 1rem;
+                transition: color 0.3s ease;
+
+                body.dark-mode & {
+                    color: $secondary-text-dark;
+                }
+
+                @include md {
+                    font-size: 1.1rem;
+                    line-height: 1.7;
+                }
+
+                @include lg {
+                    font-size: 1.15rem;
+                }
+
+                @include xl {
+                    font-size: 1.2rem;
+                }
+
+                @include ultra-wide {
+                    font-size: 1.4rem;
+                    line-height: 1.8;
+                }
+            }
+
+            @include md {
+                max-width: 90%;
+            }
+
+            @include lg {
+                max-width: 80%;
+            }
+
+            @include xl {
+                max-width: 70%;
+            }
+
+            @include ultra-wide {
+                max-width: 60%;
+            }
+        }
+
+        // Responsividade para tablets e acima
+        @include md {
+            padding: 3rem 2rem;
+        }
+
+        @include lg {
+            padding: 4rem 3rem;
+        }
+
+        @include xl {
+            padding: 5rem 4rem;
+        }
+
+        @include ultra-wide {
+            padding: 6rem 10rem;
         }
     }
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; // Previne scrollbar horizontal
+}
 
-
-
-// PARA DESKTOP
-
-// main {
-//     display: flex;
-//     flex-direction: column;
-
-
-//     .about-me {
-//         display: flex;
-//         flex-direction: row;
-//         height: 100vh;
-//         background-color: #F3F3F1;
-//         padding: 10rem;
-//         justify-content: space-between;
-        
-
-//         .about-me-text {
-//             h1 {
-//                 margin-top: 0.5rem;
-//                 color: #140802;
-//                 font-size: 4rem;
-//             }
-
-//             h3 {
-//                 color: #87817e;
-//                 font-size: 3rem;
-//                 margin-bottom: 2rem;
-//             }
-
-//             p {
-                
-//                 max-width: 25rem;
-//             }
-
-//             .botao-conferir {
-//                 background-color: #140802;
-//                 color: #fff;
-//                 font-weight: 700;
-//                 border-radius: 8px;
-//                 padding: 0.8rem 1.3rem;
-//                 display: inline-block;
-//                 cursor: pointer;
-//                 margin: 5rem ;
-//                 transition: all 0.3s ease;
-
-//                 &:hover {
-//                     background-color: #2a1004;
-//                     transform: translateY(-4px);
-//                 }
-
-//                 p {
-//                     margin: 0;
-//                 }
-//             }
-//         }
-
-//         img {
-//             height: 20rem;
-//             width: 20rem;
-//         }
-//     }
-// }
+// Também adicionar esta regra para o container principal
+#__next, .layout-container {
+    width: 100%;
+    min-height: 100vh;
+}
