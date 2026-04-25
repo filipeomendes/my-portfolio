@@ -1,9 +1,5 @@
+import AutomationPage from "@/components/AutomationPage";
+
 export default function Projeto1() {
-  return (
-    <main>
-      <div>
-        <p>PROJETO 1</p>
-      </div>
-    </main>
-  );
+  return <AutomationPage number={1} image="/projeto1.jpg" />;
 }

@@ -1,132 +1,85 @@
 'use client';
 
 import "../styles/home.scss";
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Home() {
-
   const { language } = useLanguage();
 
   const idiom = {
     en: {
       helloText: "Hello, my name is",
       aboutMeTitle: "Filipe Mendes",
-      aboutMeSubsequentTitle: "I'm a full-stack developer.",
-      aboutMeText: "I'm an enthusiastic and curious individual with a passion for exploring new technologies and ideas. I have always been fascinated by the way things work, whether it's understanding the mechanics behind a new app or diving into the world of coding. With a background in software development, I enjoy building projects that challenge me to think critically and creatively.",
-      myProjectsTitle: "My projects",
-      projectName: "Project 1",
-      projectDescription: "This project was build to automate a process in the payroll team...",
-      aboutMeButton: "Check my projetcs"
+      aboutMeSubsequentTitle: "Full-stack developer focused on automation.",
+      aboutMeText: "I build practical automations and web experiences that turn repetitive workflows into clear, reliable systems. This portfolio brings together projects designed to save time, reduce manual work and make teams move with more confidence.",
+      myProjectsTitle: "Automation portfolio",
+      aboutMeButton: "Explore automations",
+      moreAboutMeTitle: "How I work",
+      moreAboutMeText: "I like clean interfaces, simple architecture and solutions that people can actually use every day. My focus is to understand the process first, then build software that feels direct, fast and dependable.",
     },
     pt_br: {
       helloText: "Olá, meu nome é",
       aboutMeTitle: "Filipe Mendes",
-      aboutMeSubsequentTitle: "Desenvolvedor full-stack.",
-      aboutMeText: "Sou uma pessoa entusiasta e curiosa, com paixão por explorar novas tecnologias e ideias. Sempre me fascinou entender como as coisas funcionam, seja compreendendo a mecânica de um novo app ou mergulhando no mundo da programação. Com formação em desenvolvimento de software, gosto de criar projetos que me desafiem a pensar de forma crítica e criativa.",
-      myProjectsTitle: "Meus projetos",
-      projectName: "Projeto 1",
-      projectDescription: "Este projeto foi criado para automatizar um processo na equipe de folha de ...",
-      aboutMeButton: "Confira meus projetos"
-    }
-  }
+      aboutMeSubsequentTitle: "Desenvolvedor full-stack focado em automações.",
+      aboutMeText: "Eu crio automações práticas e experiências web que transformam tarefas repetitivas em sistemas claros e confiáveis. Este portfólio reúne projetos pensados para economizar tempo, reduzir trabalho manual e dar mais segurança aos processos.",
+      myProjectsTitle: "Portfólio de automações",
+      aboutMeButton: "Ver automações",
+      moreAboutMeTitle: "Como eu trabalho",
+      moreAboutMeText: "Gosto de interfaces limpas, arquitetura simples e soluções que as pessoas realmente conseguem usar no dia a dia. Meu foco é entender o processo primeiro, depois construir software direto, rápido e confiável.",
+    },
+  };
+
+  const automations = [
+    { title: "Automação 1", image: "/projeto1.jpg", href: "/projects/projeto1" },
+    { title: "Automação 2", image: "/projeto2.jpg", href: "/projects/projeto2" },
+    { title: "Automação 3", image: "/projeto3.jpg", href: "/projects/projeto3" },
+    { title: "Automação 4", image: "/projeto4.jpg", href: "/projects/projeto4" },
+    { title: "Automação 5", image: "/projeto5.jpg", href: "/projects/projeto5" },
+    { title: "Automação 6", image: "/projeto6.jpg", href: "/projects/projeto6" },
+  ];
 
   return (
     <main>
-      <section className="about-me">
+      <section className="about-me" id="about-me">
         <div className="about-me-text">
           <p>{idiom[language].helloText}</p>
           <h1>{idiom[language].aboutMeTitle}</h1>
           <h3>{idiom[language].aboutMeSubsequentTitle}</h3>
           <p>{idiom[language].aboutMeText}</p>
-          <div className="botao-conferir">
-            <p>{idiom[language].aboutMeButton}</p>
-          </div>
+          <a className="botao-conferir" href="#my-projects">{idiom[language].aboutMeButton}</a>
         </div>
         <div className="my-photo-div">
-          <Image src="/photo-filipe.png" alt="Black Github logo" width={500} height={500}/>
+          <Image src="/photo-filipe.png" alt="Filipe Mendes" width={500} height={500} priority />
         </div>
       </section>
-      <section className="my-projects">
+
+      <section className="my-projects" id="my-projects">
         <div className="my-projects-title">
           <h2>{idiom[language].myProjectsTitle}</h2>
         </div>
         <div className="my-projects-div">
-          <Link href="/projects/projeto1">
-            <div className="my-projects-card">
-              <div className="my-projects-card-image">
-                <Image src="/projeto1.jpg" alt="projeto 1 imagem" width={200} height={120}/>
-                <div className="my-projects-card-image">
-                  <h3>{idiom[language].projectName}</h3>
-                  <p>{idiom[language].projectDescription}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link href="/projects/projeto1">
-            <div className="my-projects-card">
-              <div className="my-projects-card-image">
-                <Image src="/projeto2.jpg" alt="projeto 1 imagem" width={200} height={120}/>
-                <div className="my-projects-card-image">
-                  <h3>{idiom[language].projectName}</h3>
-                  <p>{idiom[language].projectDescription}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link href="/projects/projeto1">
-            <div className="my-projects-card">
-              <div className="my-projects-card-image">
-                <Image src="/projeto3.jpg" alt="projeto 1 imagem" width={200} height={120}/>
-                <div className="my-projects-card-image">
-                  <h3>{idiom[language].projectName}</h3>
-                  <p>{idiom[language].projectDescription}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link href="/projects/projeto1">
-            <div className="my-projects-card">
-              <div className="my-projects-card-image">
-                <Image src="/projeto4.jpg" alt="projeto 1 imagem" width={200} height={120}/>
-                <div className="my-projects-card-image">
-                  <h3>{idiom[language].projectName}</h3>
-                  <p>{idiom[language].projectDescription}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link href="/projects/projeto1">
-            <div className="my-projects-card">
-              <div className="my-projects-card-image">
-                <Image src="/projeto1.jpg" alt="projeto 1 imagem" width={200} height={120}/>
-                <div className="my-projects-card-image">
-                  <h3>{idiom[language].projectName}</h3>
-                  <p>{idiom[language].projectDescription}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
-          <Link href="/projects/projeto1">
-            <div className="my-projects-card">
-              <div className="my-projects-card-image">
-                <Image src="/projeto2.jpg" alt="projeto 1 imagem" width={200} height={120}/>
-                <div className="my-projects-card-image">
-                  <h3>{idiom[language].projectName}</h3>
-                  <p>{idiom[language].projectDescription}</p>
-                </div>
-              </div>
-            </div>
-          </Link>
+          {automations.map((automation, index) => (
+            <Link href={automation.href} className="my-projects-card" key={automation.title}>
+              <span className="card-image">
+                <Image src={automation.image} alt={`${automation.title} imagem`} width={640} height={420} />
+              </span>
+              <span className="card-content">
+                <span className="card-number">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{automation.title}</h3>
+              </span>
+            </Link>
+          ))}
         </div>
       </section>
-      <section className="more-about-me">
+
+      <section className="more-about-me" id="to-get-here">
         <div className="more-about-me-title">
-          <h2>{idiom[language].myProjectsTitle}</h2>
+          <h2>{idiom[language].moreAboutMeTitle}</h2>
         </div>
         <div className="more-about-me-text">
-          <p>{idiom[language].aboutMeText}</p>
+          <p>{idiom[language].moreAboutMeText}</p>
         </div>
       </section>
     </main>

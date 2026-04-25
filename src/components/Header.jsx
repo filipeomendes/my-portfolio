@@ -1,87 +1,99 @@
 "use client";
 
 import "../styles/header.scss";
-import Image from "next/image"
+import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
 import { useState, useEffect } from "react";
 
-export default function Header(){
-   const {language, changeLanguage } = useLanguage();
-   const [isMenuOpen, setIsMenuOpen] = useState(false);
-   const [isDarkMode, setIsDarkMode] = useState(false);
+export default function Header() {
+  const { language, changeLanguage } = useLanguage();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-   useEffect(() => {
-       document.body.classList.toggle('dark-mode', isDarkMode);
-   }, [isDarkMode]);
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setIsDarkMode(savedTheme ? savedTheme === "dark" : prefersDark);
+  }, []);
 
-   const toggleTheme = () => {
-       setIsDarkMode(!isDarkMode);
-   };
+  useEffect(() => {
+    document.body.classList.toggle("dark-mode", isDarkMode);
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+  }, [isDarkMode]);
 
-   return(
-       <header className={`${isMenuOpen ? "menu-open" : ""} ${isDarkMode ? "dark-mode" : ""}`}>
-           <div className="header-bar">
-               <div className="menu-icon" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                   <Image
-                       src={isMenuOpen ? "/close.png" : "/menu.png"}
-                       alt={isMenuOpen ? "Close menu" : "Open menu"}
-                       width={24}
-                       height={24}
-                   />
-               </div>
-           </div>
-           <div className="menu-content">
-               <div className="items">
-                   <nav>
-                   <a href="#about-me">{language === "en" ? "About Me" : "Sobre Mim"}</a>
-                   <a href="#my-projects">{language === "en" ? "My Projects" : "Meus Projetos"}</a>
-                   <a href="#to-get-here">{language === "en" ? "To Get Here" : "Chegar Até Aqui"}</a>
-                   <a href="#my-social-media">{language === "en" ? "My Social Media" : "Minhas Redes Sociais"}</a>
-                   </nav>
-               </div>
-               <div className="language-and-theme">
-                   <div className="language">
-                       <div className="language-text">
-                           <p>{language === "en" ? "Language:" : "Idioma:"}</p>
-                       </div>
-                       <div className="language-icons">
-                           <Image
-                               src="/english.png"
-                               alt="United Kingdom flag button to set the page in English"
-                               width={30}
-                               height={30}
-                               onClick={() => changeLanguage("en")}/>
-                           <Image
-                               src="/br-portuguese.png"
-                               alt="Brazilian flag button to set the page in Portuguese"
-                               width={30}
-                               height={30}
-                               onClick={() => changeLanguage("pt_br")}/>
-                       </div>
-                   </div>
-                   <div className="theme-switcher" onClick={toggleTheme}>
-                       <div className="theme-text">
-                           {language === "en" 
-                               ? (isDarkMode ? "Light Mode" : "Dark Mode")
-                               : (isDarkMode ? "Modo Claro" : "Modo Escuro")
-                           }
-                       </div>
-                       <div className="theme-icon">
-                           <Image
-                               src={isDarkMode ? "/sun.png" : "/moon.png"}
-                               alt={isDarkMode ? "Sun icon" : "Moon icon"}
-                               width={24}
-                               height={24}
-                           />
-                       </div>
-                       <div className="theme-switch-container">
-                           <div className={`theme-switch ${isDarkMode ? 'dark' : 'light'}`}>
-                               <div className="slider"></div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </header>
-   );
+  const links = [
+    { href: "#about-me", label: language === "en" ? "About" : "Sobre" },
+    { href: "#my-projects", label: language === "en" ? "Automations" : "Automações" },
+    { href: "#to-get-here", label: language === "en" ? "Process" : "Processo" },
+    { href: "#my-social-media", label: language === "en" ? "Social" : "Redes" },
+  ];
+
+  const toggleTheme = () => setIsDarkMode((currentTheme) => !currentTheme);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  return (
+    <header className={`${isMenuOpen ? "menu-open" : ""} ${isDarkMode ? "dark-mode" : ""}`}>
+      <div className="header-bar">
+        <a className="brand" href="#about-me" onClick={closeMenu}>FM</a>
+
+        <button
+          className="menu-icon"
+          type="button"
+          onClick={() => setIsMenuOpen((currentState) => !currentState)}
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMenuOpen}
+        >
+          <Image
+            src={isMenuOpen ? "/close.png" : "/menu.png"}
+            alt=""
+            width={24}
+            height={24}
+          />
+        </button>
+
+        <div className="menu-content">
+          <nav className="items" aria-label="Main navigation">
+            {links.map((link) => (
+              <a href={link.href} key={link.href} onClick={closeMenu}>{link.label}</a>
+            ))}
+          </nav>
+
+          <div className="language-and-theme">
+            <div className="language" aria-label={language === "en" ? "Language" : "Idioma"}>
+              <button
+                type="button"
+                className={language === "en" ? "active" : ""}
+                onClick={() => changeLanguage("en")}
+                aria-label="Set language to English"
+              >
+                <Image src="/english.png" alt="" width={24} height={24} />
+              </button>
+              <button
+                type="button"
+                className={language === "pt_br" ? "active" : ""}
+                onClick={() => changeLanguage("pt_br")}
+                aria-label="Definir idioma para português"
+              >
+                <Image src="/br-portuguese.png" alt="" width={24} height={24} />
+              </button>
+            </div>
+
+            <button className="theme-switcher" type="button" onClick={toggleTheme}>
+              <span className="theme-icon">
+                <Image
+                  src={isDarkMode ? "/sun.png" : "/moon.png"}
+                  alt=""
+                  width={18}
+                  height={18}
+                />
+              </span>
+              <span className={`theme-switch ${isDarkMode ? "dark" : "light"}`}>
+                <span className="slider"></span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
 }

@@ -1,718 +1,265 @@
-// Variáveis para cores no modo claro
-$primary-bg-light: #F3F3F1;
-$secondary-bg-light: #F9F9F8;
-$primary-text-light: #140802;
-$secondary-text-light: #87817e;
-$accent-light: #140802;
-$accent-hover-light: #2a1004;
-$card-bg-light: #ffffff;
-$border-light: #b6a698;
-
-// Variáveis para cores no modo escuro
-$primary-bg-dark: #2A2A4E;
-$secondary-bg-dark: #1E1E38;
-$primary-text-dark: #FFFFFF;
-$secondary-text-dark: #D3D3D3;
-$accent-dark: #6D5ACF;
-$accent-hover-dark: #8975E0;
-$card-bg-dark: #343456;
-$border-dark: #4A4A7A;
-
-// Breakpoints para responsividade
-$breakpoint-sm: 576px;    // Smartphones maiores
-$breakpoint-md: 768px;    // Tablets
-$breakpoint-lg: 992px;    // Desktops
-$breakpoint-xl: 1200px;   // Telas grandes
-$breakpoint-xxl: 1400px;  // Telas maiores
-$breakpoint-4k: 2560px;   // Telas ultrawide 4K
-
-// Mixins para responsividade
-@mixin sm {
-  @media (min-width: #{$breakpoint-sm}) {
-    @content;
-  }
-}
-
-@mixin md {
-  @media (min-width: #{$breakpoint-md}) {
-    @content;
-  }
-}
-
-@mixin lg {
-  @media (min-width: #{$breakpoint-lg}) {
-    @content;
-  }
-}
-
-@mixin xl {
-  @media (min-width: #{$breakpoint-xl}) {
-    @content;
-  }
-}
-
-@mixin xxl {
-  @media (min-width: #{$breakpoint-xxl}) {
-    @content;
-  }
-}
-
-@mixin ultra-wide {
-  @media (min-width: #{$breakpoint-4k}) {
-    @content;
-  }
-}
-
 main {
+  width: 100%;
+  background:
+    radial-gradient(circle at top left, var(--accent-soft), transparent 34rem),
+    var(--bg);
+  color: var(--text);
+}
+
+.about-me,
+.my-projects,
+.more-about-me {
+  padding-inline: max(1.1rem, calc((100vw - 1320px) / 2));
+}
+
+.about-me {
+  display: grid;
+  min-height: 100svh;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 4rem;
+
+  .about-me-text {
+    display: grid;
+    gap: 1rem;
+    max-width: 42rem;
+    order: 2;
+
+    > p:first-child {
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      color: var(--text);
+      font-size: clamp(3rem, 10vw, 6.4rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      max-width: 34rem;
+      color: var(--text-muted);
+      font-size: clamp(1.55rem, 4.8vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    p {
+      max-width: 34rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .botao-conferir {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.8rem;
+      border-radius: 8px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.95rem 1.2rem;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+      &:hover {
+        background: var(--accent);
+        color: #061110;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .my-photo-div {
+    display: grid;
+    place-items: center;
+    order: 1;
+
+    img {
+      width: min(72vw, 19rem);
+      height: min(72vw, 19rem);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+  }
+}
+
+.my-projects {
+  display: grid;
+  gap: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4.5rem;
+  background: var(--bg-soft);
+
+  .my-projects-title {
     display: flex;
-    flex-direction: column;
-    width: 100%; // Garantir que ocupe 100% da largura disponível
-    max-width: 100%; // Remover limite máximo fixo
-    margin: 0 auto;
-    transition: all 0.3s ease;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-end;
 
-    @include xl {
-        max-width: 100%; // Mantém 100% em telas grandes
+    h2 {
+      max-width: 46rem;
+      color: var(--text);
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0;
     }
+  }
 
-    @include xxl {
-        max-width: 100%; // Mantém 100% em telas maiores
+  .my-projects-div {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .my-projects-card {
+    display: grid;
+    min-height: 17rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      border-color: var(--accent);
+      box-shadow: var(--shadow);
+      transform: translateY(-5px);
+
+      img {
+        transform: scale(1.05);
+      }
     }
+  }
 
-    @include ultra-wide {
-        max-width: 100%; // Mantém 100% em ultrawide
+  .card-image {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: var(--surface-strong);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
     }
-
-    // Modo escuro para o main
-    body.dark-mode & {
-        background-color: $secondary-bg-dark;
-        color: $primary-text-dark;
-    }
-
-    .about-me {
-        display: flex;
-        flex-direction: column-reverse;
-        height: auto;
-        min-height: 80vh;
-        background-color: $primary-bg-light;
-        padding: 1.5rem;
-        padding-top: 4rem;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        transition: all 0.3s ease;
-
-        // Modo escuro para about-me
-        body.dark-mode & {
-            background-color: $primary-bg-dark;
-        }
-
-        .about-me-text {
-            display: flex;
-            flex-direction: column;
-            max-width: 100%;
-            transition: all 0.3s ease;
-
-            h1 {
-                margin-top: 0.5rem;
-                color: $primary-text-light;
-                font-size: 2.4rem;
-                transition: color 0.3s ease;
-
-                body.dark-mode & {
-                    color: $primary-text-dark;
-                }
-
-                @include sm {
-                    font-size: 2.6rem;
-                }
-
-                @include md {
-                    font-size: 3rem;
-                }
-
-                @include lg {
-                    font-size: 3.5rem;
-                }
-
-                @include xl {
-                    font-size: 4rem;
-                }
-
-                @include ultra-wide {
-                    font-size: 5rem;
-                }
-            }
-
-            h3 {
-                color: $secondary-text-light;
-                font-size: 2rem;
-                margin-bottom: 1rem;
-                transition: color 0.3s ease;
-
-                body.dark-mode & {
-                    color: $secondary-text-dark;
-                }
-
-                @include sm {
-                    font-size: 2.2rem;
-                }
-
-                @include md {
-                    font-size: 2.4rem;
-                }
-
-                @include lg {
-                    font-size: 2.6rem;
-                }
-
-                @include xl {
-                    font-size: 3rem;
-                }
-
-                @include ultra-wide {
-                    font-size: 3.8rem;
-                }
-            }
-
-            p {
-                line-height: 1.6;
-                transition: color 0.3s ease;
-
-                body.dark-mode & {
-                    color: $secondary-text-dark;
-                }
-
-                @include md {
-                    font-size: 1.1rem;
-                    max-width: 80%;
-                }
-
-                @include lg {
-                    font-size: 1.15rem;
-                    max-width: 70%;
-                }
-
-                @include xl {
-                    font-size: 1.2rem;
-                    max-width: 25rem;
-                }
-
-                @include ultra-wide {
-                    font-size: 1.4rem;
-                    max-width: 35rem;
-                }
-            }
-
-            .botao-conferir {
-                background-color: $accent-light;
-                color: #fff;
-                font-weight: 700;
-                border-radius: 8px;
-                padding: 0.8rem 1.3rem;
-                display: inline-block;
-                cursor: pointer;
-                margin-top: 2rem;
-                transition: all 0.3s ease;
-                align-self: center;
-                border: none;
-
-                body.dark-mode & {
-                    background-color: $accent-dark;
-                    color: $primary-text-dark;
-                }
-
-                &:hover {
-                    background-color: $accent-hover-light;
-                    transform: translateY(-4px);
-
-                    body.dark-mode & {
-                        background-color: $accent-hover-dark;
-                    }
-                }
-
-                p {
-                    margin: 0;
-                }
-
-                @include md {
-                    font-size: 1.1rem;
-                    padding: 0.9rem 1.5rem;
-                    align-self: flex-start;
-                    margin: 2.5rem 0;
-                }
-
-                @include lg {
-                    font-size: 1.2rem;
-                    padding: 1rem 1.8rem;
-                    margin: 3rem 0;
-                }
-
-                @include xl {
-                    font-size: 1.25rem;
-                    padding: 1.1rem 2rem;
-                    margin: 4rem 0;
-                }
-
-                @include ultra-wide {
-                    font-size: 1.5rem;
-                    padding: 1.3rem 2.5rem;
-                    margin: 5rem 0;
-                    border-radius: 12px;
-                }
-            }
-        }
-
-        img {
-            height: 10rem;
-            width: 10rem;
-            margin-bottom: 0.5rem;
-            border-radius: 50%;
-            object-fit: cover;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-
-            body.dark-mode & {
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            }
-
-            @include sm {
-                height: 11rem;
-                width: 11rem;
-            }
-
-            @include md {
-                height: 12rem;
-                width: 12rem;
-                margin-bottom: 0;
-            }
-
-            @include lg {
-                height: 15rem;
-                width: 15rem;
-            }
-
-            @include xl {
-                height: 18rem;
-                width: 18rem;
-            }
-
-            @include ultra-wide {
-                height: 20rem;
-                width: 20rem;
-            }
-        }
-
-        // Responsividade para tablets e acima
-        @include md {
-            flex-direction: row;
-            justify-content: space-around;
-            padding: 2rem;
-            height: auto;
-            min-height: 100vh;
-            align-items: center;
-            gap: 2rem;
-            
-            .about-me-text {
-                align-items: flex-start;
-                
-                .botao-conferir {
-                    align-self: flex-start;
-                }
-            }
-        }
-
-        @include lg {
-            padding: 4rem;
-            gap: 3rem;
-            justify-content: space-between;
-            min-height: 90vh;
-        }
-
-        @include xl {
-            padding: 6rem 8rem;
-            gap: 4rem;
-            height: 100vh;
-        }
-
-        @include xxl {
-            padding: 8rem 10rem;
-            gap: 6rem;
-        }
-
-        @include ultra-wide {
-            padding: 10rem;
-            gap: 10rem;
-        }
-    }
-
-    .my-projects {
-        display: flex;
-        flex-direction: column;
-        background-color: $secondary-bg-light;
-        align-items: center;
-        padding: 2rem 1rem;
-        width: 100%;
-        transition: all 0.3s ease;
-
-        body.dark-mode & {
-            background-color: $secondary-bg-dark;
-        }
-
-        .my-projects-title {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
-
-            h2 {
-                font-size: 2rem;
-                color: $primary-text-light;
-                transition: color 0.3s ease;
-
-                body.dark-mode & {
-                    color: $primary-text-dark;
-                }
-
-                @include sm {
-                    font-size: 2.2rem;
-                }
-
-                @include md {
-                    font-size: 2.4rem;
-                }
-
-                @include lg {
-                    font-size: 2.6rem;
-                }
-
-                @include xl {
-                    font-size: 2.8rem;
-                }
-
-                @include ultra-wide {
-                    font-size: 3.5rem;
-                }
-            }
-        }
-
-        .my-projects-div {
-            display: flex;
-            overflow-x: auto;
-            gap: 1.5rem;
-            width: 100%;
-            padding: 1rem 0.5rem;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            transition: all 0.3s ease;
-
-            &::-webkit-scrollbar {
-                display: none;
-            }
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-            
-            a {
-                text-decoration: none;
-                color: inherit;
-                flex: 0 0 auto;
-                width: 280px;
-                scroll-snap-align: start;
-                transition: all 0.3s ease;
-
-                @include sm {
-                    width: 300px;
-                }
-
-                @include lg {
-                    width: 320px;
-                }
-
-                @include xl {
-                    width: 350px;
-                }
-
-                @include ultra-wide {
-                    width: 400px;
-                }
-            }
-
-            .my-projects-card {
-                background-color: $card-bg-light;
-                border-radius: 12px;
-                overflow: hidden;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s ease;
-                height: 100%;
-
-                body.dark-mode & {
-                    background-color: $card-bg-dark;
-                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-                }
-
-                .my-projects-card-image {
-                    position: relative;
-
-                    img {
-                        width: 100%;
-                        height: 180px;
-                        object-fit: cover;
-                        transition: all 0.3s ease;
-
-                        @include lg {
-                            height: 200px;
-                        }
-
-                        @include xl {
-                            height: 220px;
-                        }
-
-                        @include ultra-wide {
-                            height: 250px;
-                        }
-                    }
-
-                    div {
-                        padding: 1rem;
-                        background-color: $card-bg-light;
-                        transition: all 0.3s ease;
-
-                        body.dark-mode & {
-                            background-color: $card-bg-dark;
-                        }
-
-                        h3 {
-                            color: $primary-text-light;
-                            font-size: 1.2rem;
-                            margin-bottom: 0.5rem;
-                            transition: color 0.3s ease;
-
-                            body.dark-mode & {
-                                color: $primary-text-dark;
-                            }
-
-                            @include lg {
-                                font-size: 1.3rem;
-                            }
-
-                            @include xl {
-                                font-size: 1.4rem;
-                            }
-
-                            @include ultra-wide {
-                                font-size: 1.6rem;
-                            }
-                        }
-
-                        p {
-                            color: $secondary-text-light;
-                            font-size: 0.9rem;
-                            line-height: 1.4;
-                            transition: color 0.3s ease;
-
-                            body.dark-mode & {
-                                color: $secondary-text-dark;
-                            }
-
-                            @include lg {
-                                font-size: 1rem;
-                                line-height: 1.5;
-                            }
-
-                            @include xl {
-                                font-size: 1.1rem;
-                            }
-
-                            @include ultra-wide {
-                                font-size: 1.2rem;
-                                line-height: 1.6;
-                            }
-                        }
-                    }
-                }
-
-                &:hover {
-                    transform: scale(1.03);
-                    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-                    z-index: 2;
-
-                    body.dark-mode & {
-                        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
-                    }
-                }
-            }
-
-            &:hover .my-projects-card:not(:hover) {
-                filter: brightness(0.9);
-            }
-
-            // Responsividade para tablets e acima
-            @include md {
-                justify-content: center;
-                flex-wrap: wrap;
-                overflow-x: visible;
-                gap: 2rem;
-                padding: 1.5rem;
-            }
-
-            @include lg {
-                gap: 2.5rem;
-                padding: 2rem;
-            }
-
-            @include ultra-wide {
-                gap: 3rem;
-                padding: 3rem;
-            }
-        }
-
-        // Responsividade para tablets e acima
-        @include md {
-            padding: 3rem 2rem;
-        }
-
-        @include lg {
-            padding: 4rem 3rem;
-        }
-
-        @include xl {
-            padding: 5rem 4rem;
-        }
-
-        @include ultra-wide {
-            padding: 6rem 5rem;
-        }
-    }
-
-    .more-about-me {
-        display: flex;
-        flex-direction: column;
-        padding: 1.5rem;
-        align-items: center;
-        background-color: $primary-bg-light;
-        transition: all 0.3s ease;
-
-        body.dark-mode & {
-            background-color: $primary-bg-dark;
-        }
-
-        .more-about-me-title {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 2rem;
-
-            h2 {
-                font-size: 2rem;
-                color: $primary-text-light;
-                transition: color 0.3s ease;
-
-                body.dark-mode & {
-                    color: $primary-text-dark;
-                }
-
-                @include sm {
-                    font-size: 2.2rem;
-                }
-
-                @include md {
-                    font-size: 2.4rem;
-                }
-
-                @include lg {
-                    font-size: 2.6rem;
-                }
-
-                @include xl {
-                    font-size: 2.8rem;
-                }
-
-                @include ultra-wide {
-                    font-size: 3.5rem;
-                }
-            }
-        }
-
-        .more-about-me-text {
-            display: flex;
-            flex-direction: column;
-            max-width: 100%;
-            transition: all 0.3s ease;
-
-            p {
-                line-height: 1.6;
-                color: $secondary-text-light;
-                margin-bottom: 1rem;
-                transition: color 0.3s ease;
-
-                body.dark-mode & {
-                    color: $secondary-text-dark;
-                }
-
-                @include md {
-                    font-size: 1.1rem;
-                    line-height: 1.7;
-                }
-
-                @include lg {
-                    font-size: 1.15rem;
-                }
-
-                @include xl {
-                    font-size: 1.2rem;
-                }
-
-                @include ultra-wide {
-                    font-size: 1.4rem;
-                    line-height: 1.8;
-                }
-            }
-
-            @include md {
-                max-width: 90%;
-            }
-
-            @include lg {
-                max-width: 80%;
-            }
-
-            @include xl {
-                max-width: 70%;
-            }
-
-            @include ultra-wide {
-                max-width: 60%;
-            }
-        }
-
-        // Responsividade para tablets e acima
-        @include md {
-            padding: 3rem 2rem;
-        }
-
-        @include lg {
-            padding: 4rem 3rem;
-        }
-
-        @include xl {
-            padding: 5rem 4rem;
-        }
-
-        @include ultra-wide {
-            padding: 6rem 10rem;
-        }
-    }
+  }
+
+  .card-content {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .card-number {
+    width: fit-content;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.35rem 0.58rem;
+  }
+
+  h3 {
+    font-size: clamp(1.35rem, 5vw, 1.9rem);
+    line-height: 1.05;
+    letter-spacing: 0;
+  }
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden; // Previne scrollbar horizontal
+.more-about-me {
+  display: grid;
+  gap: 1.4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background: var(--bg);
+
+  h2 {
+    color: var(--text);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  p {
+    max-width: 54rem;
+    color: var(--text-muted);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.75;
+  }
 }
 
-// Também adicionar esta regra para o container principal
-#__next, .layout-container {
-    width: 100%;
-    min-height: 100vh;
+@media (min-width: 700px) {
+  .about-me {
+    grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.65fr);
+    gap: 3rem;
+
+    .about-me-text {
+      order: 1;
+    }
+
+    .my-photo-div {
+      order: 2;
+      justify-content: flex-end;
+    }
+  }
+
+  .my-projects {
+    .my-projects-div {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+  }
+}
+
+@media (min-width: 1060px) {
+  .about-me {
+    gap: 5rem;
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+  }
+
+  .my-projects {
+    padding-top: 5.5rem;
+    padding-bottom: 6rem;
+
+    .my-projects-div {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.35rem;
+    }
+  }
+
+  .more-about-me {
+    grid-template-columns: 0.7fr 1fr;
+    align-items: start;
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  .about-me,
+  .my-projects,
+  .more-about-me {
+    padding-inline: max(4rem, calc((100vw - 1540px) / 2));
+  }
+
+  .my-projects .my-projects-div {
+    gap: 1.6rem;
+  }
 }
