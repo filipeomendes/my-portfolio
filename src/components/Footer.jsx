@@ -9,7 +9,7 @@ export default function Footer() {
           <a href="https://github.com/filipeomendes" target="_blank" rel="noopener noreferrer">
             <Image src="/github-black.png" alt="Github" width={34} height={34} />
           </a>
-          <a href="filipedeoliveiramendes@gmail.com">
+          <a href="mailto:filipedeoliveiramendes@gmail.com">
             <Image src="/email-black.png" alt="Email" width={34} height={34} />
           </a>
           <a href="https://www.linkedin.com/in/filipedeoliveiramendes/" target="_blank" rel="noopener noreferrer">

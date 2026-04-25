@@ -3,10 +3,12 @@
 import "../styles/header.scss";
 import Image from "next/image";
 import { useLanguage } from "../context/LanguageContext";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function Header() {
   const { language, changeLanguage } = useLanguage();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -21,11 +23,15 @@ export default function Header() {
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
   }, [isDarkMode]);
 
+  const isHome = pathname === "/";
+  const getSectionHref = (sectionId) => `${isHome ? "" : "/"}#${sectionId}`;
+
   const links = [
-    { href: "#about-me", label: language === "en" ? "About" : "Sobre" },
-    { href: "#to-get-here", label: language === "en" ? "Process" : "Processo" },
-    { href: "#my-projects", label: language === "en" ? "Automations" : "Automações" },
-    { href: "#my-social-media", label: language === "en" ? "Social" : "Redes" },
+    { href: getSectionHref("about-me"), label: language === "en" ? "About" : "Sobre" },
+    { href: getSectionHref("to-get-here"), label: language === "en" ? "Process" : "Processo" },
+    { href: getSectionHref("my-projects"), label: language === "en" ? "Automations" : "Automações" },
+    { href: getSectionHref("contact"), label: language === "en" ? "Contact" : "Contato" },
+    { href: getSectionHref("my-social-media"), label: language === "en" ? "Social" : "Redes" },
   ];
 
   const toggleTheme = () => setIsDarkMode((currentTheme) => !currentTheme);
@@ -34,7 +40,7 @@ export default function Header() {
   return (
     <header className={`${isMenuOpen ? "menu-open" : ""} ${isDarkMode ? "dark-mode" : ""}`}>
       <div className="header-bar">
-        <a className="brand" href="#about-me" onClick={closeMenu}>FM</a>
+        <a className="brand" href={getSectionHref("about-me")} onClick={closeMenu}>FM</a>
 
         <button
           className="menu-icon"

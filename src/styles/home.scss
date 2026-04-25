@@ -8,7 +8,8 @@ main {
 
 .about-me,
 .my-projects,
-.more-about-me {
+.more-about-me,
+.contact-section {
   padding-inline: max(1.1rem, calc((100vw - 1320px) / 2));
 }
 
@@ -84,8 +85,8 @@ main {
     order: 1;
 
     img {
-      width: min(72vw, 19rem);
-      height: min(72vw, 19rem);
+      width: min(78vw, 22rem);
+      height: min(78vw, 22rem);
       border: 1px solid var(--border);
       border-radius: 50%;
       object-fit: cover;
@@ -206,8 +207,8 @@ main {
 
 @media (min-width: 700px) {
   .about-me {
-    grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.65fr);
-    gap: 3rem;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.72fr);
+    gap: 1.8rem;
 
     .about-me-text {
       order: 1;
@@ -215,7 +216,7 @@ main {
 
     .my-photo-div {
       order: 2;
-      justify-content: flex-end;
+      justify-content: center;
     }
   }
 
@@ -229,9 +230,15 @@ main {
 
 @media (min-width: 1060px) {
   .about-me {
-    gap: 5rem;
+    grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.7fr);
+    gap: 2.25rem;
     padding-top: 7rem;
     padding-bottom: 5rem;
+
+    .my-photo-div img {
+      width: min(32vw, 25rem);
+      height: min(32vw, 25rem);
+    }
   }
 
   .my-projects {
@@ -255,11 +262,41 @@ main {
 @media (min-width: 1800px) {
   .about-me,
   .my-projects,
-  .more-about-me {
+  .more-about-me,
+  .contact-section {
     padding-inline: max(4rem, calc((100vw - 1540px) / 2));
   }
 
   .my-projects .my-projects-div {
     gap: 1.6rem;
+  }
+}
+
+.contact-section {
+  display: grid;
+  place-items: center;
+  gap: 0.9rem;
+  padding-top: 4rem;
+  padding-bottom: 4.5rem;
+  background: var(--bg);
+  text-align: center;
+
+  h2 {
+    color: var(--text);
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  a {
+    color: var(--accent);
+    font-size: clamp(1rem, 3.6vw, 1.25rem);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--accent-strong);
+    }
   }
 }

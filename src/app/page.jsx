@@ -18,6 +18,7 @@ export default function Home() {
       aboutMeButton: "Explore automations",
       moreAboutMeTitle: "How I work",
       moreAboutMeText: "I build automation solutions that simplify operations and save time. My approach is to first understand how your process actually works, where time is lost, where errors happen, and what can be improved and from there, I design clean, efficient systems that run reliably in the background and deliver real, measurable results. The goal is simple: less manual work, fewer mistakes, and more time to focus on what really matters.",
+      contactTitle: "Get in touch",
     },
     pt_br: {
       helloText: "Olá, meu nome é",
@@ -28,16 +29,41 @@ export default function Home() {
       aboutMeButton: "Ver automações",
       moreAboutMeTitle: "Como eu trabalho",
       moreAboutMeText: "Eu desenvolvo soluções de automação que simplificam processos e economizam tempo. Meu foco é entender como o seu processo realmente funciona, onde há perda de tempo, onde acontecem erros e o que pode ser melhorado e a partir disso, crio sistemas simples, eficientes e confiáveis, que funcionam em segundo plano e geram resultados reais. O objetivo é simples: menos trabalho manual, menos erros e mais tempo para focar no que realmente importa.",
+      contactTitle: "Entre em contato",
     },
   };
 
   const automations = [
-    { title: "Automação 1", image: "/projeto1.jpg", href: "/projects/projeto1" },
-    { title: "Automação 2", image: "/projeto2.jpg", href: "/projects/projeto2" },
-    { title: "Automação 3", image: "/projeto3.jpg", href: "/projects/projeto3" },
-    { title: "Automação 4", image: "/projeto4.jpg", href: "/projects/projeto4" },
-    { title: "Automação 5", image: "/projeto5.jpg", href: "/projects/projeto5" },
-    { title: "Automação 6", image: "/projeto6.jpg", href: "/projects/projeto6" },
+    {
+      title: { en: "Automation 1", pt_br: "Automação 1" },
+      image: "/projeto1.jpg",
+      href: "/projects/projeto1",
+    },
+    {
+      title: { en: "Automation 2", pt_br: "Automação 2" },
+      image: "/projeto2.jpg",
+      href: "/projects/projeto2",
+    },
+    {
+      title: { en: "Automation 3", pt_br: "Automação 3" },
+      image: "/projeto3.jpg",
+      href: "/projects/projeto3",
+    },
+    {
+      title: { en: "Automation 4", pt_br: "Automação 4" },
+      image: "/projeto4.jpg",
+      href: "/projects/projeto4",
+    },
+    {
+      title: { en: "Automation 5", pt_br: "Automação 5" },
+      image: "/projeto5.jpg",
+      href: "/projects/projeto5",
+    },
+    {
+      title: { en: "Automation 6", pt_br: "Automação 6" },
+      image: "/projeto6.jpg",
+      href: "/projects/projeto6",
+    },
   ];
 
   return (
@@ -51,7 +77,7 @@ export default function Home() {
           <a className="botao-conferir" href="#my-projects">{idiom[language].aboutMeButton}</a>
         </div>
         <div className="my-photo-div">
-          <Image src="/photo-filipe.png" alt="Filipe Mendes" width={500} height={500} priority />
+          <Image src="/photo-filipe.png" alt="Filipe Mendes" width={640} height={640} priority />
         </div>
       </section>
 
@@ -70,17 +96,22 @@ export default function Home() {
         </div>
         <div className="my-projects-div">
           {automations.map((automation, index) => (
-            <Link href={automation.href} className="my-projects-card" key={automation.title}>
+            <Link href={automation.href} className="my-projects-card" key={automation.href}>
               <span className="card-image">
-                <Image src={automation.image} alt={`${automation.title} imagem`} width={640} height={420} />
+                <Image src={automation.image} alt={`${automation.title[language]} imagem`} width={640} height={420} />
               </span>
               <span className="card-content">
                 <span className="card-number">{String(index + 1).padStart(2, "0")}</span>
-                <h3>{automation.title}</h3>
+                <h3>{automation.title[language]}</h3>
               </span>
             </Link>
           ))}
         </div>
+      </section>
+
+      <section className="contact-section" id="contact">
+        <h2>{idiom[language].contactTitle}</h2>
+        <a href="mailto:filipedeoliveiramendes@gmail.com">filipedeoliveiramendes@gmail.com</a>
       </section>
     </main>
   );
