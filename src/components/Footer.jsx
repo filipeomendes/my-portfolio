@@ -9,8 +9,8 @@ export default function Footer() {
           <a href="https://github.com/filipeomendes" target="_blank" rel="noopener noreferrer">
             <Image src="/github-black.png" alt="Github" width={34} height={34} />
           </a>
-          <a href="https://www.instagram.com/codigoestagiario/" target="_blank" rel="noopener noreferrer">
-            <Image src="/instagram-black.png" alt="Instagram" width={34} height={34} />
+          <a href="filipedeoliveiramendes@gmail.com">
+            <Image src="/email-black.png" alt="Email" width={34} height={34} />
           </a>
           <a href="https://www.linkedin.com/in/filipedeoliveiramendes/" target="_blank" rel="noopener noreferrer">
             <Image src="/linkedin-black.png" alt="LinkedIn" width={34} height={34} />

@@ -17,7 +17,7 @@ export default function Home() {
       myProjectsTitle: "Automation portfolio",
       aboutMeButton: "Explore automations",
       moreAboutMeTitle: "How I work",
-      moreAboutMeText: "I like clean interfaces, simple architecture and solutions that people can actually use every day. My focus is to understand the process first, then build software that feels direct, fast and dependable.",
+      moreAboutMeText: "I build automation solutions that simplify operations and save time. My approach is to first understand how your process actually works, where time is lost, where errors happen, and what can be improved and from there, I design clean, efficient systems that run reliably in the background and deliver real, measurable results. The goal is simple: less manual work, fewer mistakes, and more time to focus on what really matters.",
     },
     pt_br: {
       helloText: "Olá, meu nome é",
@@ -27,7 +27,7 @@ export default function Home() {
       myProjectsTitle: "Portfólio de automações",
       aboutMeButton: "Ver automações",
       moreAboutMeTitle: "Como eu trabalho",
-      moreAboutMeText: "Gosto de interfaces limpas, arquitetura simples e soluções que as pessoas realmente conseguem usar no dia a dia. Meu foco é entender o processo primeiro, depois construir software direto, rápido e confiável.",
+      moreAboutMeText: "Eu desenvolvo soluções de automação que simplificam processos e economizam tempo. Meu foco é entender como o seu processo realmente funciona, onde há perda de tempo, onde acontecem erros e o que pode ser melhorado e a partir disso, crio sistemas simples, eficientes e confiáveis, que funcionam em segundo plano e geram resultados reais. O objetivo é simples: menos trabalho manual, menos erros e mais tempo para focar no que realmente importa.",
     },
   };
 
@@ -55,6 +55,15 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="more-about-me" id="to-get-here">
+        <div className="more-about-me-title">
+          <h2>{idiom[language].moreAboutMeTitle}</h2>
+        </div>
+        <div className="more-about-me-text">
+          <p>{idiom[language].moreAboutMeText}</p>
+        </div>
+      </section>
+
       <section className="my-projects" id="my-projects">
         <div className="my-projects-title">
           <h2>{idiom[language].myProjectsTitle}</h2>
@@ -71,15 +80,6 @@ export default function Home() {
               </span>
             </Link>
           ))}
-        </div>
-      </section>
-
-      <section className="more-about-me" id="to-get-here">
-        <div className="more-about-me-title">
-          <h2>{idiom[language].moreAboutMeTitle}</h2>
-        </div>
-        <div className="more-about-me-text">
-          <p>{idiom[language].moreAboutMeText}</p>
         </div>
       </section>
     </main>

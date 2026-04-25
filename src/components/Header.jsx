@@ -23,8 +23,8 @@ export default function Header() {
 
   const links = [
     { href: "#about-me", label: language === "en" ? "About" : "Sobre" },
-    { href: "#my-projects", label: language === "en" ? "Automations" : "Automações" },
     { href: "#to-get-here", label: language === "en" ? "Process" : "Processo" },
+    { href: "#my-projects", label: language === "en" ? "Automations" : "Automações" },
     { href: "#my-social-media", label: language === "en" ? "Social" : "Redes" },
   ];
 
