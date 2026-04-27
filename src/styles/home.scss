@@ -1,0 +1,428 @@
+main {
+  width: 100%;
+  background:
+    radial-gradient(circle at top left, var(--page-wash), transparent 34rem),
+    var(--bg);
+  color: var(--text);
+}
+
+.about-me,
+.my-projects,
+.more-about-me,
+.tech-stack,
+.contact-section {
+  padding-inline: max(1.1rem, calc((100vw - 1320px) / 2));
+}
+
+.about-me {
+  display: grid;
+  min-height: 100svh;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 2.5rem;
+  padding-top: 6.5rem;
+  padding-bottom: 4rem;
+
+  .about-me-text {
+    display: grid;
+    gap: 1rem;
+    max-width: 42rem;
+    order: 2;
+
+    > p:first-child {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      color: var(--text);
+      font-size: clamp(3rem, 10vw, 6.4rem);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      max-width: 34rem;
+      color: var(--text-muted);
+      font-size: clamp(1.55rem, 4.8vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    p {
+      max-width: 34rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .botao-conferir {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.8rem;
+      border-radius: 8px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.95rem 1.2rem;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+      &:hover {
+        background: var(--accent);
+        color: #061110;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  .my-photo-div {
+    display: grid;
+    place-items: center;
+    order: 1;
+
+    img {
+      width: min(78vw, 22rem);
+      height: min(78vw, 22rem);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      object-fit: cover;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+  }
+}
+
+.my-projects {
+  display: grid;
+  gap: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4.5rem;
+  background: var(--bg-soft);
+
+  .my-projects-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-end;
+
+    h2 {
+      max-width: 46rem;
+      color: var(--text);
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+  }
+
+  .my-projects-div {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .my-projects-card {
+    display: grid;
+    min-height: 17rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.08);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      border-color: var(--border);
+      box-shadow: var(--shadow);
+      transform: translateY(-5px);
+
+      img {
+        filter: saturate(1) contrast(1) brightness(1);
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .card-image {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 10;
+    background: var(--surface-strong);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.25) contrast(0.95) brightness(1.02);
+      transition: filter 0.45s ease, transform 0.45s ease;
+    }
+  }
+
+  .card-content {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .card-number {
+    width: fit-content;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.35rem 0.58rem;
+  }
+
+  h3 {
+    font-size: clamp(1.35rem, 5vw, 1.9rem);
+    line-height: 1.05;
+    letter-spacing: 0;
+  }
+}
+
+.more-about-me {
+  display: grid;
+  gap: 1.4rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background: var(--bg);
+
+  h2 {
+    color: var(--text);
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  p {
+    max-width: 54rem;
+    color: var(--text-muted);
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.75;
+  }
+}
+
+.tech-stack {
+  display: grid;
+  gap: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4.5rem;
+  background: color-mix(in srgb, var(--bg) 72%, var(--accent-soft));
+
+  .tech-stack-title {
+    text-align: center;
+
+    h2 {
+      color: var(--text);
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+  }
+
+  .tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .tech-logo-card {
+    position: relative;
+    display: grid;
+    min-height: 7.2rem;
+    place-items: center;
+
+    img {
+      width: clamp(3.3rem, 18vw, 5rem);
+      height: clamp(3.3rem, 18vw, 5rem);
+      object-fit: contain;
+    }
+
+    span {
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-top: 0.65rem;
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  .about-me {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.72fr);
+    gap: 1.8rem;
+
+    .about-me-text {
+      order: 1;
+    }
+
+    .my-photo-div {
+      order: 2;
+      justify-content: center;
+    }
+  }
+
+  .my-projects {
+    .my-projects-div {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+  }
+
+  .tech-stack {
+    .tech-stack-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .tech-logo-card {
+      span {
+        position: absolute;
+        left: 50%;
+        bottom: 0.35rem;
+        opacity: 0;
+        transform: translate(-50%, 0.35rem);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        white-space: nowrap;
+      }
+
+      img {
+        filter: saturate(0.12) contrast(0.95) brightness(1.02);
+        transition: filter 0.35s ease, transform 0.35s ease;
+      }
+
+      &:hover {
+        img {
+          filter: saturate(1) contrast(1) brightness(1);
+          transform: translateY(-0.5rem);
+        }
+
+        span {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1060px) {
+  .about-me {
+    grid-template-columns: minmax(0, 0.95fr) minmax(22rem, 0.7fr);
+    gap: 2.25rem;
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+
+    .my-photo-div img {
+      width: min(32vw, 25rem);
+      height: min(32vw, 25rem);
+    }
+  }
+
+  .my-projects {
+    padding-top: 5.5rem;
+    padding-bottom: 6rem;
+
+    .my-projects-div {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.35rem;
+    }
+  }
+
+  .tech-stack {
+    .tech-stack-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1.35rem;
+    }
+  }
+
+  .more-about-me {
+    grid-template-columns: 0.7fr 1fr;
+    align-items: start;
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  .about-me,
+  .my-projects,
+  .more-about-me,
+  .tech-stack,
+  .contact-section {
+    padding-inline: max(4rem, calc((100vw - 1540px) / 2));
+  }
+
+  .my-projects .my-projects-div {
+    gap: 1.6rem;
+  }
+}
+
+.contact-section {
+  display: grid;
+  place-items: center;
+  gap: 0.9rem;
+  padding-top: 4rem;
+  padding-bottom: 4.5rem;
+  background: var(--bg);
+  text-align: center;
+
+  h2 {
+    color: var(--text);
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  a {
+    color: var(--accent-strong);
+    font-size: clamp(1rem, 3.6vw, 1.25rem);
+    font-weight: 700;
+    overflow-wrap: anywhere;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--text);
+    }
+  }
+}
+
+body.dark-mode {
+  main {
+    background:
+      radial-gradient(circle at top left, var(--page-wash), transparent 34rem),
+      var(--bg);
+  }
+
+  .about-me .about-me-text > p:first-child {
+    color: var(--accent);
+  }
+
+  .my-projects {
+    .my-projects-card:hover {
+      border-color: var(--accent);
+    }
+
+    .card-number {
+      color: var(--accent);
+    }
+  }
+
+  .tech-stack {
+    background: color-mix(in srgb, var(--bg) 78%, var(--surface-strong));
+  }
+
+  .contact-section a {
+    color: var(--accent);
+
+    &:hover {
+      color: var(--accent-strong);
+    }
+  }
+}
