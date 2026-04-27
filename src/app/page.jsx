@@ -18,6 +18,7 @@ export default function Home() {
       aboutMeButton: "Explore automations",
       moreAboutMeTitle: "How I work",
       moreAboutMeText: "I build automation solutions that simplify operations and save time. My approach is to first understand how your process actually works, where time is lost, where errors happen, and what can be improved and from there, I design clean, efficient systems that run reliably in the background and deliver real, measurable results. The goal is simple: less manual work, fewer mistakes, and more time to focus on what really matters.",
+      techStackTitle: "Technologies I work with",
       contactTitle: "Get in touch",
     },
     pt_br: {
@@ -29,41 +30,55 @@ export default function Home() {
       aboutMeButton: "Ver automações",
       moreAboutMeTitle: "Como eu trabalho",
       moreAboutMeText: "Eu desenvolvo soluções de automação que simplificam processos e economizam tempo. Meu foco é entender como o seu processo realmente funciona, onde há perda de tempo, onde acontecem erros e o que pode ser melhorado e a partir disso, crio sistemas simples, eficientes e confiáveis, que funcionam em segundo plano e geram resultados reais. O objetivo é simples: menos trabalho manual, menos erros e mais tempo para focar no que realmente importa.",
+      techStackTitle: "Tecnologias que utilizo",
       contactTitle: "Entre em contato",
     },
   };
 
   const automations = [
     {
-      title: { en: "Automation 1", pt_br: "Automação 1" },
+      title: { en: "Attendance Integration System", pt_br: "Sistema de Integração de Relatórios de Ponto." },
       image: "/projeto1.jpg",
       href: "/projects/projeto1",
     },
     {
-      title: { en: "Automation 2", pt_br: "Automação 2" },
+      title: { en: "Financial Statement Extraction Automation", pt_br: "Automação de Extração de Declarações Financeiras" },
       image: "/projeto2.jpg",
       href: "/projects/projeto2",
     },
     {
-      title: { en: "Automation 3", pt_br: "Automação 3" },
+      title: { en: "XML to Excel Converter", pt_br: "Conversor de XML para Excel" },
       image: "/projeto3.jpg",
       href: "/projects/projeto3",
     },
     {
-      title: { en: "Automation 4", pt_br: "Automação 4" },
+      title: { en: "Document Generator", pt_br: "Gerador de Documentos" },
       image: "/projeto4.jpg",
       href: "/projects/projeto4",
     },
     {
-      title: { en: "Automation 5", pt_br: "Automação 5" },
+      title: { en: "PDF Splitting Automation", pt_br: "Automação de Separação de PDFs" },
       image: "/projeto5.jpg",
       href: "/projects/projeto5",
     },
     {
-      title: { en: "Automation 6", pt_br: "Automação 6" },
+      title: { en: "Excel to ERP Integration", pt_br: "Integração de Excel com ERP" },
       image: "/projeto6.jpg",
       href: "/projects/projeto6",
     },
+  ];
+
+  const techLogos = [
+    { name: "Python", image: "/python.png" },
+    { name: "React.js", image: "/reactjs.png" },
+    { name: "JavaScript", image: "/javascript.png" },
+    { name: "HTML", image: "/html.png" },
+    { name: "SQL", image: "/database.png" },
+    { name: "C Sharp", image: "/csharp.png" },
+    { name: "Java", image: "/java.png" },
+    { name: "Docker", image: "/docker.png" },
+    { name: "Kotlin", image: "/kotlin.png" },
+    { name: "TypeScript", image: "/typescript.png" },
   ];
 
   return (
@@ -105,6 +120,20 @@ export default function Home() {
                 <h3>{automation.title[language]}</h3>
               </span>
             </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="tech-stack" id="tech-stack">
+        <div className="tech-stack-title">
+          <h2>{idiom[language].techStackTitle}</h2>
+        </div>
+        <div className="tech-stack-grid">
+          {techLogos.map((logo) => (
+            <div className="tech-logo-card" key={logo.name}>
+              <Image src={logo.image} alt={`${logo.name} logo`} width={120} height={120} />
+              <span>{logo.name}</span>
+            </div>
           ))}
         </div>
       </section>

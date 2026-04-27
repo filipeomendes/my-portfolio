@@ -10,12 +10,11 @@ export default function Header() {
   const { language, changeLanguage } = useLanguage();
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setIsDarkMode(savedTheme ? savedTheme === "dark" : prefersDark);
+    setIsDarkMode(savedTheme ? savedTheme === "dark" : true);
   }, []);
 
   useEffect(() => {

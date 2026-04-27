@@ -152,7 +152,7 @@ header {
   }
 
   &.dark-mode .theme-icon img {
-    filter: invert(1);
+    filter: brightness(0) saturate(100%) invert(83%) sepia(84%) saturate(748%) hue-rotate(354deg) brightness(101%) contrast(101%);
   }
 
   .theme-switch {
